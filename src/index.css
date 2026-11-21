@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-bone font-sans text-ink antialiased; overflow-x: hidden; }
+  h1, h2, h3 { @apply font-display font-semibold leading-[1.05] tracking-tight; }
+  :focus-visible { @apply outline outline-2 outline-offset-2 outline-gold; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+}
+
+@layer components {
+  .container-x { @apply mx-auto w-full max-w-7xl px-5 sm:px-8; }
+  .section { @apply py-20 md:py-28; }
+  .placeholder-pattern {
+    background-color: #242424;
+    background-image: repeating-linear-gradient(135deg, rgba(201,162,75,.12) 0 1px, transparent 1px 14px);
+  }
+  .placeholder-pattern.light {
+    background-color: #e9e2d3;
+    background-image: repeating-linear-gradient(135deg, rgba(138,106,31,.16) 0 1px, transparent 1px 14px);
+  }
+  .animated-placeholder {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .animated-placeholder::before {
+    content: "";
+    position: absolute;
+    width: 170%;
+    height: 170%;
+    left: -35%;
+    bottom: -125%;
+    border: 1px solid currentColor;
+    border-radius: 44% 56% 48% 52%;
+    opacity: 0.22;
+    z-index: -1;
+    animation: placeholder-orbit 8s linear infinite;
+  }
+  .animated-placeholder::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 25%, rgba(201, 162, 75, 0.18) 45%, transparent 65%);
+    transform: translateX(-120%);
+    animation: placeholder-shimmer 3.2s ease-in-out infinite;
+  }
+  .placeholder-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    border: 1px solid currentColor;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  }
+  @keyframes placeholder-orbit {
+    to { transform: rotate(360deg); }
+  }
+  @keyframes placeholder-shimmer {
+    0%, 20% { transform: translateX(-120%); }
+    65%, 100% { transform: translateX(120%); }
+  }
+}
