@@ -4,13 +4,14 @@ import { company, constructionServices, cleaningServices, navLinks } from '../da
 
 const h = 'mb-4 font-display text-xl font-semibold text-gold'
 const li = 'text-sm text-stone-light hover:text-gold'
+const logoSrc = `${import.meta.env.BASE_URL}logo.png`
 
 export default function Footer() {
   return (
     <footer className="border-t-2 border-gold bg-ink text-white">
       <div className="container-x grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.2fr]">
         <div>
-          <img src="/logo.png" alt="LAMS Trading & Projects [South Africa] logo" className="h-32 w-32 object-contain" />
+          <img src={logoSrc} alt="LAMS Trading & Projects [South Africa] logo" className="h-32 w-32 bg-white p-2 object-contain ring-1 ring-gold" />
           <p className="mt-2 font-semibold">{company.name}</p>
           <p className="mt-2 max-w-xs text-sm text-stone-light">{company.description}</p>
         </div>

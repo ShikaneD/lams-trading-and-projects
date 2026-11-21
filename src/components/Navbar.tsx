@@ -5,6 +5,8 @@ import { Menu, Phone, X } from 'lucide-react'
 import { company, navLinks } from '../data/company'
 import Button from './Button'
 
+const logoSrc = `${import.meta.env.BASE_URL}logo.png`
+
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const { pathname } = useLocation()
@@ -17,7 +19,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 border-b border-gold/30 bg-ink/95 backdrop-blur">
       <div className="container-x flex h-20 items-center justify-between">
         <Link to="/" aria-label={`${company.shortName} home`}>
-          <img src="/logo.png" alt="LAMS Trading & Projects [South Africa] logo" className="h-16 w-16 object-contain" />
+          <img src={logoSrc} alt="LAMS Trading & Projects [South Africa] logo" className="h-16 w-16 bg-white p-1 object-contain ring-1 ring-gold" />
         </Link>
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Main">
           {navLinks.map((l) => <NavLink key={l.to} to={l.to} end className={link}>{l.label}</NavLink>)}
