@@ -16,7 +16,7 @@ npm run preview    # test the production build
 Upload `dist/` to any static host. Netlify (`public/_redirects`) and Vercel (`vercel.json`) are already configured for client-side routing. On other hosts, route all paths to `index.html`.
 
 ## GitHub demo
-Pushing to `main` deploys the site to GitHub Pages and publishes a Docker image to GitHub Container Registry (GHCR). After the first push, enable Pages in the repository settings and select **GitHub Actions** as the build and deployment source.
+Pushing to `main` deploys the site to GitHub Pages and publishes a Docker image to GitHub Container Registry (GHCR). In the repository settings, enable Pages and select **GitHub Actions** as the build and deployment source. GitHub Actions cannot enable Pages for this repository automatically.
 
 The demo URL is `https://shikaned.github.io/lams-trading-and-projects/`.
 
@@ -26,6 +26,7 @@ docker build -t lams-trading-and-projects .
 docker run --rm -p 8080:80 lams-trading-and-projects
 ```
 Then open `http://localhost:8080`. The GHCR image is `ghcr.io/shikaned/lams-trading-and-projects:latest`.
+GitHub creates new container packages as private. To allow public pulls, open the repository's **Packages**, select `lams-trading-and-projects`, then use **Package settings → Change visibility → Public**. GitHub hosts the image in GHCR; it does not keep a Docker container running as a website, so use the Pages URL for the live demo.
 
 ## Edit content
 Everything editable lives in `src/data/company.ts`: phone, hours, address, map URL, services, values, projects.
